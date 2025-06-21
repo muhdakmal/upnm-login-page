@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ms" class="h-full bg-gray-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log Masuk - Sistem ePTW UPNM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .animate-blob { animation: blob 10s infinite; }
+    .animation-delay-2000 { animation-delay: 2s; }
+    .animation-delay-4000 { animation-delay: 4s; }
+    @keyframes blob {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(20px, -30px) scale(1.1); }
+      50% { transform: translate(-20px, 40px) scale(0.9); }
+      75% { transform: translate(10px, -10px) scale(1.05); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    .animation-delay-300 { animation-delay: 0.3s; }
+    .animation-delay-600 { animation-delay: 0.6s; }
+  </style>
+</head>
+<body class="h-full">
+<div class="flex flex-col h-screen">
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-sm flex-shrink-0" x-data="{ open: false }">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 justify-between">
+        <div class="flex">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="h-10 w-auto" src="esmart.png" alt="UPNM Logo">
+          </div>
+          <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+            <a href="#" class="inline-flex items-center border-b-2 border-blue-500 px-1 pt-1 text-sm font-semibold text-gray-900">Log Masuk</a>
+            <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Syarat Permohonan</a>
+            <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Panduan</a>
+            <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Soalan Lazim</a>
+          </div>
+        </div>
+        <div class="hidden sm:ml-6 sm:flex sm:items-center">
+          <!-- Profile dropdown -->
+          <div class="relative ml-3" x-data="{ open: false }">
+             <a href="#" class="inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500">Daftar Kontraktor</a>
+          </div>
+        </div>
+        <div class="-mr-2 flex items-center sm:hidden">
+          <!-- Mobile menu button -->
+          <button @click="open = !open" type="button" class="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" :class="{ 'hidden': open, 'block': !open }" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+            <svg class="hidden h-6 w-6" :class="{ 'block': open, 'hidden': !open }" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div x-show="open" class="sm:hidden" id="mobile-menu">
+      <div class="space-y-1 pb-3 pt-2">
+        <a href="#" class="block border-l-4 border-blue-500 bg-blue-50 py-2 pl-3 pr-4 text-base font-semibold text-blue-700">Log Masuk</a>
+        <a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800">Syarat Permohonan</a>
+        <a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800">Panduan</a>
+        <a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800">Soalan Lazim</a>
+         <a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800">Daftar Kontraktor</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="flex flex-grow">
+    <!-- Left side with gradient and branding -->
+    <div class="hidden lg:flex lg:w-1/2 xl:w-2/3 bg-gradient-to-tr from-cyan-500 to-blue-600 items-center justify-center p-12 text-white text-center relative overflow-hidden">
+      <div class="absolute top-0 -left-1/4 w-96 h-96 bg-white/20 rounded-full mix-blend-screen filter blur-xl opacity-70 animate-blob"></div>
+      <div class="absolute top-0 -right-1/4 w-80 h-80 bg-white/20 rounded-full mix-blend-screen filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-8 left-20 w-72 h-72 bg-white/20 rounded-full mix-blend-screen filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      <div class="flex flex-col items-center relative z-10">
+        <img src="esmart.png" alt="UPNM Logo" class="w-48 mb-6 bg-white p-4 rounded-full shadow-lg animate-fade-in-up">
+        <h1 class="text-4xl font-bold mb-2 animate-fade-in-up animation-delay-300">Selamat Datang ke Sistem e-PTW</h1>
+        <p class="text-lg opacity-90 animate-fade-in-up animation-delay-600">Universiti Pertahanan Nasional Malaysia</p>
+      </div>
+      <div class="absolute bottom-4 text-sm opacity-70 z-10">
+        © 2025 Powered by BTMK, UPNM
+      </div>
+    </div>
+
+    <!-- Right side with login form -->
+    <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+      <div class="mx-auto w-full max-w-sm lg:w-96">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900">Log Masuk</h2>
+          <p class="mt-2 text-sm text-gray-600">
+            Sila masukkan ID Pengguna dan Kata Laluan anda.
+          </p>
+        </div>
+        <div class="mt-8">
+          <form action="login_exe.php" method="POST" class="space-y-6">
+            <div>
+              <label for="f_stafID" class="block text-sm font-medium leading-6 text-gray-900">ID Pengguna</label>
+              <div class="mt-2 relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.095a1.23 1.23 0 00.41-1.412A9.992 9.992 0 0010 12c-2.31 0-4.438.784-6.131 2.095z" /></svg>
+                </span>
+                <input id="f_stafID" name="f_stafID" type="text" placeholder="Cth: 900101105599" required class="block w-full rounded-md border-0 py-2.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 transition">
+              </div>
+            </div>
+            <div>
+              <label for="f_password" class="block text-sm font-medium leading-6 text-gray-900">Kata Laluan</label>
+              <div class="mt-2 relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" /></svg>
+                </span>
+                <input id="f_password" name="f_password" type="password" placeholder="******" required class="block w-full rounded-md border-0 py-2.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 transition">
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="text-sm">
+                <a href="#" class="font-semibold text-blue-600 hover:text-blue-500">Lupa Katalaluan?</a>
+              </div>
+            </div>
+            <div>
+              <button type="submit" class="flex w-full justify-center rounded-md bg-blue-600 px-3 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition">Log Masuk</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html> 
